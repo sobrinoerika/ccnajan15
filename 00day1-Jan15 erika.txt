@@ -114,7 +114,8 @@ dial-peer voice 4 pots
    port 0/0/3
 end
 
-!!IP telephony
+!!IP telephony (2x ipepaste)
+
 config t
 no telephony-service
 telephony-service
@@ -220,7 +221,7 @@ dial-peer voice 52 Voip
  codec g711ULAW
 
 @@@@@@
-!@@@EDGE ROUTE CONFIG
+!@@@EDGE ROUTE CONFIG (10.31.31.1)
 config t
    hostname EDGE-31
    enable secret pass
@@ -248,8 +249,28 @@ config t
 	 ip add 31.31.31.1 255.255.255.255
  end
 
- 
- 
+ !!! EDGE route NOT dikit to ClassMate:
+ config t
+ ip route 10.11.0.0 255.255.0.0 200.0.0.11
+ ip route 10.12.0.0 255.255.0.0 200.0.0.12
+ ip route 10.21.0.0 255.255.0.0 200.0.0.21
+ ip route 10.22.0.0 255.255.0.0 200.0.0.22
+ ip route 10.31.0.0 255.255.0.0 10.31.31.4
+ ip route 10.32.0.0 255.255.0.0 200.0.0.32
+ ip route 10.41.0.0 255.255.0.0 200.0.0.41
+ ip route 10.42.0.0 255.255.0.0 200.0.0.42
+ ip route 10.51.0.0 255.255.0.0 200.0.0.51
+ ip route 10.52.0.0 255.255.0.0 200.0.0.52
+ ip route 10.61.0.0 255.255.0.0 200.0.0.61
+ ip route 10.62.0.0 255.255.0.0 200.0.0.62
+ ip route 10.71.0.0 255.255.0.0 200.0.0.71
+ end
+
+@COREBABA:
+conf t
+ip routing
+ip route 0.0.0.0 0.0.0.0 10.31.31.1
+
 @cucm Static Route:
 config t
 ip routing
